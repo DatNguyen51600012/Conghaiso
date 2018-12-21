@@ -2,6 +2,7 @@
 Đây là bài cộng hai số viết trên IDE netbean đã có test 
 
 Để chạy trên console :
+
   1 - Copy tất cả file về ổ đĩa bạn muốn
   
   2 - Nhấn Shift + chuột phải
