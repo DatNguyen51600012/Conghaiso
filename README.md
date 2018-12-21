@@ -3,7 +3,7 @@
 
 Để chạy trên console :
 
-  1 - Copy tất cả file về ổ đĩa bạn muốn
+  1 - Copy tất cả file trong mục MyBigNumber về ổ đĩa bạn muốn
   
   2 - Nhấn Shift + chuột phải
   
