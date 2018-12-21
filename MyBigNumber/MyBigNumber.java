@@ -32,16 +32,16 @@ public class MyBigNumber {
 
         String result = "";   // chu?i ch?a k?t qu?
         
-        String stepMsg = "";   // chu?i ch?a c·c b??c trong qu· trÏnh c?ng
+        String stepMsg = "";   // chu?i ch?a c√°c b??c trong qu√° tr√¨nh c?ng
 
-        int temp = 0;   // bi?n tÌnh t?ng
+        int temp = 0;   // bi?n t√≠nh t?ng
         
-        int temp2 = 0;  // bi?n l?y h‡ng ??n v?
+        int temp2 = 0;  // bi?n l?y h√†ng ??n v?
         int carry = 0;  // bi?n nh?
         int i = 0;      // bi?n ??m
 
-        int length1 = s1.length();   // bi?n ch?a ?? d‡i chu?i 1
-        int length2 = s2.length();   // bi?n ch?a ?? d‡i chu?i 2
+        int length1 = s1.length();   // bi?n ch?a ?? d√†i chu?i 1
+        int length2 = s2.length();   // bi?n ch?a ?? d√†i chu?i 2
         
         int n1 = 0;     // bi?n ch?a s? trong chu?i 1
         int n2 = 0;     // bi?n ch?a s? trong chu?i 2
@@ -50,7 +50,7 @@ public class MyBigNumber {
         char checkS1;     // bi?n ki?m tra 
         char checkS2;     // bi?n ki?m tra 
 
-        int length = length1 < length2 ? length2 : length1; // L?y  bi?n ch?a ?? d‡i l?n nh?t trong 2 chu?i s1, s2
+        int length = length1 < length2 ? length2 : length1; // L?y  bi?n ch?a ?? d√†i l?n nh?t trong 2 chu?i s1, s2
 
         for (i = 0; i < length; i++) {
 
@@ -68,13 +68,13 @@ public class MyBigNumber {
             n1 = i < length1 ? (s1.charAt(length1 - i - 1) - '0') : 0;
             n2 = i < length2 ? (s2.charAt(length2 - i - 1) - '0') : 0;
 
-            temp = n2 + n1 + carry; // tÌnh t?ng
-            temp2 = temp % 10;  // l?y h‡ng ??n v?
+            temp = n2 + n1 + carry; // t√≠nh t?ng
+            temp2 = temp % 10;  // l?y h√†ng ??n v?
 
             if (carry == 0) {
-                stepMsg += "\n" + "Buoc " + (i + 1) + ": "  + "lay " + n1 + ", cong " + n2 + ", bang " + temp + ", viet " + temp2 + ", nho " + temp / 10 + "\n"; // g?i thÙng b·o t?ng b??c c?ng
+                stepMsg += "\n" + "Buoc " + (i + 1) + ": "  + "lay " + n1 + ", cong " + n2 + ", bang " + temp + ", viet " + temp2 + ", nho " + temp / 10 + "\n"; // g?i th√¥ng b√°o t?ng b??c c?ng
             } else {
-                stepMsg += "\n" + "Buoc " + (i + 1) + ": " + "lay " + n1 + ", cong " + n2 + ", nho " + carry + ", bang " + temp + ", viet " + temp2 + ", nho " + carry + "\n"; // g?i thÙng b·o t?ng b??c c?ng
+                stepMsg += "\n" + "Buoc " + (i + 1) + ": " + "lay " + n1 + ", cong " + n2 + ", nho " + carry + ", bang " + temp + ", viet " + temp2 + ", nho " + carry + "\n"; // g?i th√¥ng b√°o t?ng b??c c?ng
             }
 
             carry = temp / 10;
