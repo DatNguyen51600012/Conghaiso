@@ -2,7 +2,7 @@
 /**
  Author : Nguyen Thanh Dat 
  MSSV 51600012
- Class(file) MyBigNumber use to add two number
+ Class(file) MyBigNumber để cộng hai số
  Edited : 21/12/2018 
 
  hàm main
@@ -20,7 +20,8 @@ public class MyBigNumberMain implements IReceiver{
 
     /**
      *
-     * @param args
+     * @param args s1
+     * @param args s2
      */
 
     
@@ -40,7 +41,7 @@ public class MyBigNumberMain implements IReceiver{
                 String[]split = input.split(" ");
 
                 String result = s.sum(split[1], split[2]);
-                System.out.println("Kết quả : " + result + "\n");
+                System.out.println("Ket qua : " + result + "\n");
 
                 success = true;
             } catch (NumberFormatException e) {
