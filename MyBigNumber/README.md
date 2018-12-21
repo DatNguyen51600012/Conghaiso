@@ -16,7 +16,7 @@
   ++++++++++++++++++++++++++++++++++++++++++++++++++++
   
   version v2.0 : Yêu cầu :Hãy đặt file readme vào thư mục khác như MyBigNumBer/blod/master/Readme 
-Hãy xóa file dư thừ đi như build , dish . ( của bạn Bách ) Đã thực hiện
+Hãy xóa file dư thừa đi như build , dish . ( của bạn Bách ) Đã thực hiện
   
   
   
