@@ -1,120 +1,96 @@
-package myjava.mybignumber;
-
-    /**
-     * Author: Nguyễn Văn Hải
-     * Description: 
-     * Đây là class dùng để cộng 2 chuỗi số
-     * Hàm sum là hàm dùng để thực hiện phép cộng 2 chuỗi số
-     * */
-
+/**
+ Author : Nguyen Thanh Dat 
+ MSSV 51600012
+ Class(file) MyBigNumber use to add two number
+ Edited : 21/12/2018 
+ */
+ 
 public class MyBigNumber {
 
-    private IReceiver ireceiver;
+    private IReceiver receiver;
 
-    public MyBigNumber(final IReceiver ireceiver){
-        this.ireceiver = ireceiver;
+    public MyBigNumber(){}
+
+    public MyBigNumber(final IReceiver receiver) {
+        this.receiver = receiver;
     }
 
-    /**
-     * Để thực hiện phép cộng 2 chuỗi số, ta phải truyền vào 2 tham số cho hàm sum
-     * Và 2 chuỗi số này chỉ chứa các kí tự số [0-9]
-     * 
-     * @param str1 chuỗi số 1
-     * @param str2 chuỗi số 2
-     * */
 
-    public String sum(final String str1, final String str2) {
-	    //Khai báo biến
-	
-	    String results = ""; //Biến dùng để lưu kết quả cuối cùng của 2 chuỗi số
-	    String step = ""; //biến dùng để làm tham số cho hàm send trong của interface
-	    String msg = ""; //biến dùng để chứa đoạn text hướng dẫn các bước cộng
-	    int len1 = str1.length(); //biến chứa độ dài chuỗi str1
-	    int len2 = str2.length(); //biến chứa độ dài chuỗi srt2
-	    final int maxLen = (len1 > len2) ? len1 : len2; //lấy độ dài lớn nhất của 1 trong 2 chuỗi số str1 và str2
-	    int index1; //xác định vị trí của kí tự đang xét của chuỗi str1
-	    int index2; //xác định vị trí của kí tự đang xét của chuỗi str2
-	    char c1; //kí tự tại vị trí đang xét index1 của chuỗi str1
-	    char c2; //kí tự tại vị trí đang xét index2 của chuỗi str2
-	    int temp1; //kí số của c1
-	    int temp2; //kí số của c2
-	    int total; //tổng tạm
-	    int totalNoMem; //tổng tạm không có nhớ
-	    int remem = 0; //biến nhớ
-	    int tempRemem = 0; //biến nhớ tạm
-	    final String pattern = "\\d+"; //chuỗi số đại diện cho kí tự số [0-9]
-	    final boolean flag1; //biến để lưu trữ kết quả xét chuỗi str1
-	    final boolean flag2; //biến để lưu trữ kết quả xét chuỗi str2
-	
-	    //Kiểm tra số có phải là số âm hay không
-	    if(str1.charAt(0) == '-') {
-		    this.ireceiver.send("NumberFormatException(\"Vui lòng không chứa số âm trong str1 : " + str1);
-		    throw new NumberFormatException("Vui lòng không chứ số âm trong str1 : " + str1);
-	    }
-	
-	    if(str2.charAt(0) == '-') {
-		    this.ireceiver.send("NumberFormatException(\"Vui lòng không chứa số âm trong str2 : " + str2);
-		    throw new NumberFormatException("Vui lòng không chứ số âm trong str2 : " + str2);
-	    }
-	
-	    //Kiểm tra kí tự có phải là kí tự đặc biệt hay chữ hay không
-	    flag1 = str1.matches(pattern);
-	    flag2 = str2.matches(pattern);
-	
-	    if(!flag1) {
-	    	this.ireceiver.send("NumberFormatException(\"Vui lòng không chứa kí tự đặc biệt hoặc chữ trong chuỗi str1 : " + str1);
-            throw new NumberFormatException("Vui lòng không chứa kí tự đặc biệt hoặc chữ trong chuỗi str1 : " + str1);
-	    }
-	
-	    if(!flag2) {
-	    	this.ireceiver.send("NumberFormatException(\"Vui lòng không chứa kí tự đặc biệt hoặc chữ trong chuỗi str2 : " + str2);
-            throw new NumberFormatException("Vui lòng không chứa kí tự đặc biệt hoặc chữ trong chuỗi str2 : " + str2);
-	    }
-	
-	    //Chạy vòng lập để cộng từng số trong 2 chuỗi số
-	    for(int i = 0; i < maxLen; i++) {
-		    index1 = len1 - i - 1; //lấy ra vị trí index1 phía bên phải của chuỗi str1
-		    index2 = len2 - i - 1; //lấy ra vị trí index2 phía bên phải của chuỗi str2
-		
-		    c1 = (index1 >= 0) ? str1.charAt(index1) : '0';
-		    c2 = (index2 >= 0) ? str2.charAt(index2) : '0';
-		
-		    temp1 = c1 - '0'; //Số tại vị trí index1
-		    temp2 = c2 - '0'; //Số tại vị trí index2
-		
-		    tempRemem = remem;
-		    total = temp1 + temp2 + remem; //Tổng tạm của 2 số tại vị trí index1 + số tại vị trí index2 + số nhớ
-		    totalNoMem = temp1 + temp2;
-		
-		    //Lấy số ở hàng đơn vị của total ghép vào phía trước kết quả
-		    results = (total % 10) + results;
-		    remem = total / 10; //số nhớ
-		
-		    if(i == 0) {
-			    msg = "Step " + (i+1) + " : " + temp1 + " + " + temp2 + " = " + totalNoMem
-					    + " , " + " Remember " + remem + " , " + " Result " + results + "\n";
-		    }else {
-		    	if(tempRemem == 0) {
-		    		msg = "Step " + (i+1) + " : " + temp1 + " + " + temp2 + " = " + totalNoMem
-						    + " , " + " Remember " + remem + " , " + " Result " + results + "\n";
-		    	}else {
-		    		msg = "Step " + (i+1) + " : " + temp1 + " + " + temp2 + " + " + tempRemem + " = "
-						    + total + " , " + " Remember " + remem + " , " + "Result " + results + "\n";
-		    	}
-		    }
-		    step = step + msg;
-	    }
-	
-	    //Kết thúc vòng lặp
-	    //Nếu biến nhớ remember có giá trị thì ghép thêm remem vào phía trước kết quả
-	    if(remem > 0) {
-	    	String tempSre = results;
-		    results = remem + results;
-		    step = step + "Take " + remem + " forward " + tempSre + " , " + " Result: " + results + "\n";
-	    }
-	    step = "\n" + str1 + " + " + str2 + " = " + results + "\n" + " Process implementation: \n" + step;
-	    this.ireceiver.send(step);
-	
-	    return results;
+    /**
+     *  Ham cong hai so .
+     */
+
+    public String sum(final String s1, final String s2) {
+
+        if (s1.contains("-")) {
+            throw new NumberFormatException("So thu nhat phai la so nguyen duong"); // bat loi khong phai so nguyen duong
+        } 
+
+        if (s2.contains("-")) {
+            throw new NumberFormatException("So thu nhi phai la so nguyen duong"); // bat loi khong phai so nguyen duong
+        }
+
+        String result = "";   // chu?i ch?a k?t qu?
+        
+        String stepMsg = "";   // chu?i ch?a c�c b??c trong qu� tr�nh c?ng
+
+        int temp = 0;   // bi?n t�nh t?ng
+        
+        int temp2 = 0;  // bi?n l?y h�ng ??n v?
+        int carry = 0;  // bi?n nh?
+        int i = 0;      // bi?n ??m
+
+        int length1 = s1.length();   // bi?n ch?a ?? d�i chu?i 1
+        int length2 = s2.length();   // bi?n ch?a ?? d�i chu?i 2
+        
+        int n1 = 0;     // bi?n ch?a s? trong chu?i 1
+        int n2 = 0;     // bi?n ch?a s? trong chu?i 2
+
+
+        char checkS1;     // bi?n ki?m tra 
+        char checkS2;     // bi?n ki?m tra 
+
+        int length = length1 < length2 ? length2 : length1; // L?y  bi?n ch?a ?? d�i l?n nh?t trong 2 chu?i s1, s2
+
+        for (i = 0; i < length; i++) {
+
+            checkS1 = i < length1 ? s1.charAt(i) : '0'; 
+            checkS2 = i < length2 ? s2.charAt(i) : '0';
+
+            if (!(checkS1 >= '0' && checkS1 <= '9')) {
+                throw new NumberFormatException("Vi tri thu " + (s1.indexOf(checkS1) + 1) + " cua so thu 1 khong phai la so");
+            }
+
+            if (!(checkS2 >= '0' && checkS2 <= '9')) {
+                throw new NumberFormatException("Vi tri thu " + (s2.indexOf(checkS1) + 1) + " cua so thu 2 khong phai la so");
+            }
+
+            n1 = i < length1 ? (s1.charAt(length1 - i - 1) - '0') : 0;
+            n2 = i < length2 ? (s2.charAt(length2 - i - 1) - '0') : 0;
+
+            temp = n2 + n1 + carry; // t�nh t?ng
+            temp2 = temp % 10;  // l?y h�ng ??n v?
+
+            if (carry == 0) {
+                stepMsg += "\n" + "Buoc " + (i + 1) + ": "  + "lay " + n1 + ", cong " + n2 + ", bang " + temp + ", viet " + temp2 + ", nho " + temp / 10 + "\n"; // g?i th�ng b�o t?ng b??c c?ng
+            } else {
+                stepMsg += "\n" + "Buoc " + (i + 1) + ": " + "lay " + n1 + ", cong " + n2 + ", nho " + carry + ", bang " + temp + ", viet " + temp2 + ", nho " + carry + "\n"; // g?i th�ng b�o t?ng b??c c?ng
+            }
+
+            carry = temp / 10;
+            result = temp2 + result;
+
+        }
+
+        if (carry > 0) {
+            result = result + carry;
+            stepMsg += "\n" + "Buoc " + (i + 1) + ": " + "lay " + 0 + ", cong " + 0 + ", nho " + 1 + ", bang " + 1 + ", viet " + 1 + "\n";
+        }
+
+
+        receiver.sendMessage(stepMsg);
+
+        return result;
+
     }
 }

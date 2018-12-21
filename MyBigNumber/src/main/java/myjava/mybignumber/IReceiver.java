@@ -1,12 +1,21 @@
-package myjava.mybignumber;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-    /**
-     * Tác giả : Nguyễn Thành Đạt
-     * MSSV : 51600012
-     * IReceiver là interface cho phép in từng bước cộng 2 số
-     * */
+/**
+ Author : Nguyen Thanh Dat 
+ MSSV 51600012
+ Class(file) MyBigNumber use to add two number
+ Edited : 21/12/2018 
+
+ Interface IReceiver gửi thông báo
+
+* */
 
 public interface IReceiver {
 
-    void send(String msg);
+    void sendMessage(String mString);
+
 }
