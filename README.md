@@ -1,21 +1,18 @@
 # Conghaiso
 Đây là bài cộng hai số viết trên IDE netbean đã test 
 
-Để chạy trên console :
+Để chạy trên console (CMD) :
 
-  1 - Copy tất cả file trong mục MyBigNumber về ổ đĩa bạn muốn
+  1 - Download file MyBigNumber.jar ở mục MyBigNumber/dist/
   
-  2 - Nhấn Shift + chuột phải
+  2 - Chuyển tới thư mục của bạn
   
-  3 - Gõ lệnh javac ( Nếu đã cài java rồi )
+  3 - Gõ lệnh java -jar "Disk:\Address\MyBigNumber.jar" ( Disk là ổ đĩa , Address là địa chỉ folder lưu file )
   
-  4 - Gõ lệnh java
+  4 - Nhập sum 4 7 ( 4 7 là hai số bạn muốn cộng ) 
   
-  5 - Gõ lệnh javac MyBigNumberMain.java
   
-  6 - Gõ lệnh java MyBigNumberMain để chạy
   
-  7 - Gõ sum 4 5 ( 4 5 là hai số bạn muốn cộng )
   
 
 
